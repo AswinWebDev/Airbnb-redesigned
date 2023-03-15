@@ -1,6 +1,8 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
+import LanguageIcon from "@mui/icons-material/Language";
+import AccountMenu from "./AccountMenu";
 
 const HeaderContainer = () => {
   return (
@@ -25,7 +27,7 @@ const HeaderContainer = () => {
           paddingTop={1}
           paddingBottom={1}
           paddingLeft={2}
-          paddingRight={1}
+          paddingRight={2}
           sx={{
             border: "5px solid rgba(255, 255, 255, .5)",
             boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",
@@ -43,20 +45,27 @@ const HeaderContainer = () => {
             Start your search
           </Typography>
           <SearchIcon
+            fontSize="small"
             sx={{
               border: "2px solid transparent",
               borderRadius: "30px",
-              padding: "1%",
+              padding: "2%",
               color: "white",
-              backgroundColor: "#cf305d",
+              backgroundColor: "#ff385c",
               flexShrink: 0,
             }}
           />
         </Box>
         {/* search */}
 
-        <Box sx={{ alignSelf: "center" }}>
-          <Typography variant="subtitle1">Air Bnb your home</Typography>
+        <Box
+          sx={{ display: "flex", alignSelf: "center", alignItems: "center" }}
+        >
+          <Typography variant="subtitle2" marginRight={2} fontWeight={600}>
+            Airbnb your home
+          </Typography>
+          <LanguageIcon sx={{ opacity: "70%", marginRight: "1rem" }} />
+          <AccountMenu />
         </Box>
       </Stack>
     </Box>

@@ -22,7 +22,7 @@ import BookDate from "./CardDetailsPageContent/BookDate";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
-import HeaderContainer from "../components/HeaderContainer";
+import HeaderContainer from "../components/header/HeaderContainer";
 
 // function srcset(image, size, rows = 1, cols = 1) {
 //   return {

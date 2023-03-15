@@ -4,7 +4,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import CardList from "./components/CardList";
-import HeaderContainer from "./components/HeaderContainer";
+import HeaderContainer from "./components/header/HeaderContainer";
+import HeaderSearch from "./components/header/HeaderSearch";
+import Stays from "./components/header/Stays";
+import StaysRegion from "./components/header/StaysRegion";
 
 import Navbar from "./components/Navbar";
 import CardDetailsPage from "./pages/CardDetailsPage";
@@ -16,6 +19,7 @@ const App = () => {
   const allJson = useSelector((state) => {
     return state.jsonData;
   });
+  // console.log(allJson);
 
   const [iconData, setIconData] = useState();
   useEffect(() => {
@@ -42,13 +46,16 @@ const App = () => {
             path="/"
             element={
               <Box>
-                <HeaderContainer />
-                <Navbar iconData={iconData} />
-                <CardList />
+                {/* <HeaderContainer /> */}
+                <HeaderSearch />
+                {/* <Stays /> */}
+                {/* <StaysRegion /> */}
+                {/* <Navbar iconData={iconData} /> */}
+                {/* <CardList /> */}
               </Box>
             }
           />
-          <Route path="/place/:id" element={<CardDetailsPage />} />
+          {/* <Route path="/place/:id" element={<CardDetailsPage />} /> */}
         </Routes>
       </Box>
     </Container>
