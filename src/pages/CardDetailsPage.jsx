@@ -23,6 +23,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 import HeaderContainer from "../components/header/HeaderContainer";
+import SearchBar from "../components/SearchBar";
 
 // function srcset(image, size, rows = 1, cols = 1) {
 //   return {
@@ -76,7 +77,7 @@ const CardDetailsPage = () => {
   // calender states //
   return (
     <Box sx={{ padding: "0 3%" }}>
-      <HeaderContainer />
+      <SearchBar />
       <Box>
         <Typography
           variant="subtitle1"

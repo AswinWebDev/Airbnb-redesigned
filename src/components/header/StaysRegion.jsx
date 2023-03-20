@@ -1,4 +1,5 @@
 import {
+  Backdrop,
   Card,
   CardActionArea,
   CardContent,
@@ -7,10 +8,24 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addLocation } from "../../store";
 
-const StaysRegion = () => {
+const StaysRegion = ({ setTempLocation, setValue }) => {
+  const dispatch = useDispatch();
+  const allLocation = useSelector((state) => {
+    return state.jsonLocation;
+  });
+
+  // console.log(allLocation);
+
   const region = [
+    {
+      id: 1,
+      area: "flexible",
+      img: "https://img.freepik.com/premium-vector/grey-political-world-map-vector-isolated-illustration_175838-1418.jpg?w=996",
+    },
     {
       id: 2,
       area: "europe",
@@ -63,10 +78,17 @@ const StaysRegion = () => {
     },
   ];
   const renderedRegion = region.map((mov) => {
+    // console.log(mov);
     return (
       <Grid key={mov.id} xs={12} sm={3} item md={3}>
         <Card sx={{ maxWidth: 150 }}>
-          <CardActionArea>
+          <CardActionArea
+            onClick={() => {
+              setTempLocation(mov.area);
+              setValue(null);
+              // dispatch(addLocation(mov.area));
+            }}
+          >
             <CardMedia
               component="img"
               height="140"
@@ -84,7 +106,27 @@ const StaysRegion = () => {
     );
   });
   return (
-    <Box sx={{ width: "47rem" }}>
+    // <>
+    // <Backdrop open={isBoxActive} sx={{ zIndex: 9998, backgroundColor: "rgba(0, 0, 0, 0.5)" }} onClick={handleBoxToggle} />
+    //   <Box> ...</Box>
+    // </>
+
+    <Box
+      sx={{
+        position: "absolute",
+        top: "0",
+        left: "23%",
+        // transform: "translateX(-50%)",
+        transform: "translateY(23%)",
+        zIndex: "9999",
+        width: "40rem",
+        backgroundColor: "#fff",
+        border: "1px solid rgba(255, 255, 255, .5)",
+        boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",
+        borderRadius: "50px",
+        padding: "2rem",
+      }}
+    >
       <Grid
         container
         rowSpacing={3}
@@ -93,14 +135,16 @@ const StaysRegion = () => {
         paddingBottom={1}
         paddingLeft={2}
         paddingRight={2}
-        sx={{
-          border: "1px solid rgba(255, 255, 255, .5)",
-          boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",
-          borderRadius: "50px",
-          // display: "flex",
-          // alignItems: "center",
-          // width: "20rem",
-        }}
+        sx={
+          {
+            // border: "1px solid rgba(255, 255, 255, .5)",
+            // boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",
+            // borderRadius: "50px",
+            // display: "flex",
+            // alignItems: "center",
+            // width: "20rem",
+          }
+        }
       >
         {renderedRegion}
       </Grid>
@@ -109,23 +153,3 @@ const StaysRegion = () => {
 };
 
 export default StaysRegion;
-
-/*
- <Grid xs={12} sm={4} item md={3}>
-          <Card sx={{ maxWidth: 150 }}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height="140"
-                image="https://img.freepik.com/free-vector/grey-world-map_1053-431.jpg?w=740&t=st=1678785850~exp=1678786450~hmac=7f780b19d27dd426fbd1d0b95a801babe9e286ffa1632a72766c15822322947a"
-                alt="green iguana"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="subtitle1" component="div">
-                  I'm Flexible
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Grid> 
-*/

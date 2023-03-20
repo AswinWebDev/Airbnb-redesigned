@@ -42,13 +42,20 @@ const CardList = () => {
     return state.jsonType;
   });
 
+  const allLocation = useSelector((state) => {
+    return state.jsonLocation;
+  });
+
   const rendered = allJson
     .filter((mov) => {
-      console.log(mov.location);
+      // console.log(mov.location);
+      if (allLocation !== "flexible") {
+        return mov.location === allLocation;
+      }
       return mov.type === jsonTypeVal[0];
     })
     .map((mov) => {
-      console.log(mov.location);
+      // console.log(mov.location);
       return (
         <Grid xs={12} sm={4} item md={3}>
           <Card sx={{ maxWidth: 345 }}>
@@ -176,7 +183,3 @@ const CardList = () => {
 };
 
 export default CardList;
-
-//
-//
-//

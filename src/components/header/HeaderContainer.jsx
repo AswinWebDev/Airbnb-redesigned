@@ -4,7 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
 import AccountMenu from "./AccountMenu";
 
-const HeaderContainer = () => {
+const HeaderContainer = ({ handleToggle }) => {
   return (
     <Box marginBottom={3}>
       <Stack
@@ -24,6 +24,7 @@ const HeaderContainer = () => {
         </Box>
         {/* search */}
         <Box
+          onClick={handleToggle}
           paddingTop={1}
           paddingBottom={1}
           paddingLeft={2}
@@ -34,6 +35,11 @@ const HeaderContainer = () => {
             borderRadius: "30px",
             display: "flex",
             alignItems: "center",
+            // hover anchor tag
+            "&:hover": {
+              cursor: "pointer",
+              backgroundColor: "rgba(255, 255, 255, .5)",
+            },
             // width: "20%",
           }}
         >

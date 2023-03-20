@@ -1,21 +1,31 @@
 import { Box, Tab, Tabs, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addType } from "../store";
+import { addType, addLocation } from "../store";
 
 const Navbar = ({ iconData }) => {
   const dispatch = useDispatch();
   const jsonTypeVal = useSelector((state) => {
     return state.jsonType;
   });
-
+  const allLocation = useSelector((state) => {
+    return state.jsonLocation;
+  });
   // console.log(typeof jsonTypeVal);
   const [value, setValue] = useState(0);
   if (iconData) {
     // console.log(iconData[0].title);
   }
   //   console.log(iconData.title);
+
+  useEffect(() => {
+    if (allLocation !== "flexible") {
+      setValue(null);
+    }
+
+    // allLocation !== "flexible" ? setValue(null) : null;
+  }, [allLocation]);
 
   const renderTabs = iconData?.map((icon) => {
     // console.log();
@@ -30,6 +40,7 @@ const Navbar = ({ iconData }) => {
         label={imageAndTitle}
         onClick={() => {
           dispatch(addType(icon.title));
+          dispatch(addLocation("flexible"));
         }}
       />
     );

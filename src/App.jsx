@@ -1,6 +1,6 @@
 import { Box, Container } from "@mui/material";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import CardList from "./components/CardList";
@@ -10,6 +10,7 @@ import Stays from "./components/header/Stays";
 import StaysRegion from "./components/header/StaysRegion";
 
 import Navbar from "./components/Navbar";
+import SearchBar from "./components/SearchBar";
 import CardDetailsPage from "./pages/CardDetailsPage";
 // import BookDate from "./pages/CardDetailsPageContent/BookDate";
 import { addJson } from "./store";
@@ -38,6 +39,7 @@ const App = () => {
     })();
     /////////--------Fetchng JSON DATA and updating in state----------////////////
   }, []);
+
   return (
     <Container maxWidth="xl">
       <Box sx={{ padding: "0 3%" }}>
@@ -46,16 +48,13 @@ const App = () => {
             path="/"
             element={
               <Box>
-                {/* <HeaderContainer /> */}
-                <HeaderSearch />
-                {/* <Stays /> */}
-                {/* <StaysRegion /> */}
-                {/* <Navbar iconData={iconData} /> */}
-                {/* <CardList /> */}
+                <SearchBar />
+                <Navbar iconData={iconData} />
+                <CardList />
               </Box>
             }
           />
-          {/* <Route path="/place/:id" element={<CardDetailsPage />} /> */}
+          <Route path="/place/:id" element={<CardDetailsPage />} />
         </Routes>
       </Box>
     </Container>
