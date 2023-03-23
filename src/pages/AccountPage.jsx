@@ -110,7 +110,7 @@ const AccountPage = () => {
     );
   });
   return (
-    <Box padding={5}>
+    <Box padding={5} marginBottom={5}>
       <Typography variant="h4">Account</Typography>
       <div style={{ display: "flex" }}>
         <Typography variant="subtitle1">
