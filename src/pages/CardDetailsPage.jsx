@@ -9,6 +9,7 @@ import {
   Grid,
   Stack,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import StoreMallDirectoryOutlinedIcon from "@mui/icons-material/StoreMallDirectoryOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
@@ -24,15 +25,10 @@ import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 import HeaderContainer from "../components/header/HeaderContainer";
 import SearchBar from "../components/SearchBar";
-
-// function srcset(image, size, rows = 1, cols = 1) {
-//   return {
-//     src: image,
-//     srcSet: `${image} 2x`,
-//   };
-// }
+import CarouselContainer from "../components/CarouselContainer";
 
 const CardDetailsPage = () => {
+  const isSmallScreen = useMediaQuery("(max-width: 600px)");
   const allJson = useSelector((state) => {
     return state.jsonData;
   });
@@ -95,19 +91,23 @@ const CardDetailsPage = () => {
           </strong>
         </Typography>
       </Box>
-      <Box>
-        <ImageList variant="quilted" cols={4} rowHeight={200}>
-          {itemData.map((item) => (
-            <ImageListItem
-              key={item.img}
-              cols={item.cols || 1}
-              rows={item.rows || 1}
-            >
-              <img src={item.img} alt={item.title} loading="lazy" />
-            </ImageListItem>
-          ))}
-        </ImageList>
-      </Box>
+      {!isSmallScreen ? (
+        <Box>
+          <ImageList variant="quilted" cols={4} rowHeight={200}>
+            {itemData.map((item) => (
+              <ImageListItem
+                key={item.img}
+                cols={item.cols || 1}
+                rows={item.rows || 1}
+              >
+                <img src={item.img} alt={item.title} loading="lazy" />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        </Box>
+      ) : (
+        <CarouselContainer mov={product} />
+      )}
 
       {/* under image  */}
       <Grid container spacing={2}>

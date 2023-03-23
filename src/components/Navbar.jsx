@@ -31,7 +31,7 @@ const Navbar = ({ iconData }) => {
     // console.log();
     const imageAndTitle = (
       <Stack spacing={2}>
-        <img src={icon.url} alt={icon.title} style={{ maxWidth: "2rem" }} />
+        <img src={icon.url} alt={icon.title} style={{ maxWidth: "1.7rem" }} />
         <Typography
           variant="caption"
           sx={{
