@@ -77,7 +77,7 @@ const CardDetailsPage = () => {
   // calender states //
   return (
     <Box sx={{ padding: "0 3%" }}>
-      <SearchBar />
+      {/* <SearchBar /> */}
       <Box>
         <Typography
           variant="subtitle1"

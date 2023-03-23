@@ -6,6 +6,7 @@ import {
   CardMedia,
   Grid,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
@@ -13,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addLocation } from "../../store";
 
 const StaysRegion = ({ setTempLocation, setValue }) => {
+  const isSmallScreen = useMediaQuery("(max-width: 800px)");
   const dispatch = useDispatch();
   const allLocation = useSelector((state) => {
     return state.jsonLocation;
@@ -110,45 +112,67 @@ const StaysRegion = ({ setTempLocation, setValue }) => {
     // <Backdrop open={isBoxActive} sx={{ zIndex: 9998, backgroundColor: "rgba(0, 0, 0, 0.5)" }} onClick={handleBoxToggle} />
     //   <Box> ...</Box>
     // </>
-
-    <Box
-      sx={{
-        position: "absolute",
-        top: "0",
-        left: "23%",
-        // transform: "translateX(-50%)",
-        transform: "translateY(23%)",
-        zIndex: "9999",
-        width: "40rem",
-        backgroundColor: "#fff",
-        border: "1px solid rgba(255, 255, 255, .5)",
-        boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",
-        borderRadius: "50px",
-        padding: "2rem",
-      }}
-    >
-      <Grid
-        container
-        rowSpacing={3}
-        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        paddingTop={1}
-        paddingBottom={1}
-        paddingLeft={2}
-        paddingRight={2}
-        sx={
-          {
-            // border: "1px solid rgba(255, 255, 255, .5)",
-            // boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",
-            // borderRadius: "50px",
-            // display: "flex",
-            // alignItems: "center",
-            // width: "20rem",
-          }
-        }
-      >
-        {renderedRegion}
-      </Grid>
-    </Box>
+    <div>
+      {!isSmallScreen ? (
+        <Box
+          sx={{
+            position: "absolute",
+            top: "0",
+            left: "23%",
+            // transform: "translateX(-50%)",
+            transform: "translateY(23%)",
+            zIndex: "9999",
+            width: "40rem",
+            backgroundColor: "#fff",
+            border: "1px solid rgba(255, 255, 255, .5)",
+            boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",
+            borderRadius: "50px",
+            padding: "2rem",
+          }}
+        >
+          <Grid
+            container
+            rowSpacing={3}
+            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+            paddingTop={1}
+            paddingBottom={1}
+            paddingLeft={2}
+            paddingRight={2}
+          >
+            {renderedRegion}
+          </Grid>
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            // position: "absolute",
+            // top: "0",
+            // left: "23%",
+            // transform: "translateX(-50%)",
+            // transform: "translateY(23%)",
+            // zIndex: "9999",
+            // width: "40rem",
+            backgroundColor: "#fff",
+            border: "1px solid rgba(255, 255, 255, .5)",
+            boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",
+            borderRadius: "50px",
+            padding: "2rem",
+          }}
+        >
+          <Grid
+            container
+            rowSpacing={3}
+            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+            paddingTop={1}
+            paddingBottom={1}
+            paddingLeft={2}
+            paddingRight={2}
+          >
+            {renderedRegion}
+          </Grid>
+        </Box>
+      )}
+    </div>
   );
 };
 

@@ -3,6 +3,8 @@ import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
 import AccountMenu from "./AccountMenu";
+import airbnbSvg from "../../assets/airbnb.svg";
+import { Link } from "react-router-dom";
 
 const HeaderContainer = ({ handleToggle }) => {
   return (
@@ -15,12 +17,16 @@ const HeaderContainer = ({ handleToggle }) => {
         // alignItems="center"
         sx={{ display: "flex" }}
       >
-        <Box sx={{ margin: "0", display: { xs: "none", sm: "block" } }}>
-          <img
-            src="https://1000logos.net/wp-content/uploads/2017/08/Airbnb-logo.jpg"
-            alt="logo"
-            style={{ height: "100%" }}
-          />
+        <Box
+          sx={{
+            margin: "0",
+            marginTop: "1%",
+            display: { xs: "none", sm: "block" },
+          }}
+        >
+          <Link to={`/`} style={{ textDecoration: "none" }}>
+            <img src={airbnbSvg} alt="logo" style={{ height: "75%" }} />
+          </Link>
         </Box>
         {/* search */}
         <Box
@@ -65,9 +71,19 @@ const HeaderContainer = ({ handleToggle }) => {
         {/* search */}
 
         <Box
-          sx={{ display: "flex", alignSelf: "center", alignItems: "center" }}
+          sx={{
+            // display: "flex",
+            alignSelf: "center",
+            alignItems: "center",
+            display: { xs: "none", lg: "flex", xl: "flex" },
+          }}
         >
-          <Typography variant="subtitle2" marginRight={2} fontWeight={600}>
+          <Typography
+            variant="subtitle2"
+            marginRight={2}
+            fontWeight={600}
+            // sx={{ display: { sm: "block", md: "none" } }}
+          >
             Airbnb your home
           </Typography>
           <LanguageIcon sx={{ opacity: "70%", marginRight: "1rem" }} />

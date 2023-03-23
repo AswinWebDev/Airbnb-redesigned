@@ -1,5 +1,7 @@
+import { Collapse } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useRef, useState } from "react";
+
 import HeaderContainer from "./header/HeaderContainer";
 import HeaderSearch from "./header/HeaderSearch";
 
@@ -30,15 +32,20 @@ const SearchBar = () => {
   // state to determine if the search bar is open or not
   return (
     <Box ref={containerRef}>
-      {!open && <HeaderContainer handleToggle={handleToggle} />}
-
-      {open && (
-        <div>
+      {<HeaderContainer handleToggle={handleToggle} />}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          width: "90%",
+          zIndex: "99",
+          paddingTop: "0.5rem",
+        }}
+      >
+        <Collapse in={open}>
           <HeaderSearch handleClose={handleClose} />
-        </div>
-      )}
-      {/* <Stays /> */}
-      {/* <StaysRegion /> */}
+        </Collapse>
+      </div>
     </Box>
   );
 };

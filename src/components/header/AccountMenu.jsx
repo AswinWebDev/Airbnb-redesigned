@@ -13,11 +13,14 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import DehazeIcon from "@mui/icons-material/Dehaze";
 import { useState } from "react";
+import { signInWithGoogle, signOutUser } from "../../Firebase";
+import { Link } from "react-router-dom";
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const [logged, setLogged] = useState(false);
+  const name = localStorage.getItem("name");
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -26,7 +29,7 @@ export default function AccountMenu() {
     setAnchorEl(null);
   };
   return (
-    <React.Fragment>
+    <Box>
       <Box
         sx={{
           display: "flex",
@@ -86,22 +89,21 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        {!logged ? (
+        {!name ? (
           <>
-            <MenuItem onClick={handleClose} sx={{ fontWeight: "bold" }}>
-              Sign up
+            <MenuItem onClick={signInWithGoogle} sx={{ fontWeight: "bold" }}>
+              Sign in
             </MenuItem>
-            <MenuItem
+            {/* <MenuItem
               onClick={() => {
                 setLogged(true);
               }}
             >
               Log in
-            </MenuItem>
+            </MenuItem> */}
           </>
         ) : (
           <>
-            <MenuItem>Messages</MenuItem>
             <MenuItem>Notifications</MenuItem>
             <MenuItem>Trips</MenuItem>
             <MenuItem>Wishlist</MenuItem>
@@ -111,16 +113,20 @@ export default function AccountMenu() {
         <MenuItem>Airbnb your home</MenuItem>
         <MenuItem>Host an Experience</MenuItem>
         <MenuItem>Help</MenuItem>
-        {logged ? (
-          <MenuItem
-            onClick={() => {
-              setLogged(false);
-            }}
-          >
-            Log Out
-          </MenuItem>
+        <Divider />
+
+        {name ? (
+          <>
+            <Link
+              to={"/account"}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <MenuItem>Account</MenuItem>
+            </Link>
+            <MenuItem onClick={signOutUser}>Log Out</MenuItem>{" "}
+          </>
         ) : null}
       </Menu>
-    </React.Fragment>
+    </Box>
   );
 }

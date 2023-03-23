@@ -1,4 +1,4 @@
-import { Backdrop, Box, Stack, Typography } from "@mui/material";
+import { Backdrop, Box, Stack, Typography, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -8,8 +8,11 @@ import Tab from "@mui/material/Tab";
 import Stays from "./Stays";
 import StaysRegion from "./StaysRegion";
 // import "./HeaderSearch.css";
+import airbnbSvg from "../../assets/airbnb.svg";
+import { Link } from "react-router-dom";
 
 const HeaderSearch = ({ handleClose }) => {
+  const isSmallScreen = useMediaQuery("(max-width: 600px)");
   // const [open, setOpen] = useState(true);
   // const handleClose = () => {
   //   setOpen(false);
@@ -42,12 +45,16 @@ const HeaderSearch = ({ handleClose }) => {
           // alignItems="center"
           sx={{ display: "flex" }}
         >
-          <Box sx={{ margin: "0", display: { xs: "none", sm: "block" } }}>
-            <img
-              src="https://1000logos.net/wp-content/uploads/2017/08/Airbnb-logo.jpg"
-              alt="logo"
-              style={{ height: "100%" }}
-            />
+          <Box
+            sx={{
+              margin: "0",
+              marginTop: "1%",
+              display: { xs: "none", sm: "none", md: "block" },
+            }}
+          >
+            <Link to={`/`} style={{ textDecoration: "none" }}>
+              <img src={airbnbSvg} alt="logo" style={{ height: "75%" }} />
+            </Link>
           </Box>
           {/* search */}
           <Box
@@ -69,14 +76,16 @@ const HeaderSearch = ({ handleClose }) => {
             >
               <Tab label="Stays" />
               <Tab label="Experience" />
-              <Tab label="Online Experience" />
+              {!isSmallScreen && <Tab label="Online Experience" />}
+              {/* <Tab label="Online Experience" /> */}
             </Tabs>
           </Box>
           {/* search */}
 
           <Box
             sx={{
-              display: "flex",
+              // display: "flex",
+              display: { xs: "none", lg: "flex", xl: "flex" },
               alignSelf: "center",
               alignItems: "center",
             }}
@@ -92,9 +101,10 @@ const HeaderSearch = ({ handleClose }) => {
           <div>
             <div
               style={{
-                padding: "1rem",
                 display: "flex",
+                // display: { xs: "none", lg: "flex", xl: "flex" },
                 justifyContent: "center",
+                padding: "1rem",
               }}
             >
               <Stays handleClose={handleClose} />

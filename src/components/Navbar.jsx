@@ -32,7 +32,14 @@ const Navbar = ({ iconData }) => {
     const imageAndTitle = (
       <Stack spacing={2}>
         <img src={icon.url} alt={icon.title} style={{ maxWidth: "2rem" }} />
-        <Typography variant="caption">{icon.title}</Typography>
+        <Typography
+          variant="caption"
+          sx={{
+            color: "black",
+          }}
+        >
+          {icon.title}
+        </Typography>
       </Stack>
     );
     return (
@@ -41,6 +48,10 @@ const Navbar = ({ iconData }) => {
         onClick={() => {
           dispatch(addType(icon.title));
           dispatch(addLocation("flexible"));
+        }}
+        sx={{
+          opacity: "0.7",
+          ":hover": { opacity: "1" },
         }}
       />
     );

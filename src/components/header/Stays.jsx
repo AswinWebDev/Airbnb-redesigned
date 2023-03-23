@@ -1,4 +1,11 @@
-import { Backdrop, Box, Divider, Popover, Typography } from "@mui/material";
+import {
+  Backdrop,
+  Box,
+  Divider,
+  Popover,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import React, { useState } from "react";
 import StaysRegion from "./StaysRegion";
@@ -11,12 +18,14 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Stays = ({ handleClose }) => {
+  const isSmallScreen = useMediaQuery("(max-width: 600px)");
   const [value, setValue] = useState(0);
   const [tempLocation, setTempLocation] = useState("flexible");
   const dispatch = useDispatch();
   return (
     <div style={{ width: "50rem" }}>
       <ButtonGroup
+        orientation={isSmallScreen ? "vertical" : "horizontal"}
         variant="contained"
         aria-label="outlined primary button group"
         sx={{
@@ -127,8 +136,16 @@ const Stays = ({ handleClose }) => {
                 // justifyContent: "center",
                 border: "2px solid transparent",
                 borderRadius: "30px",
+                //shadow
+                boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.2)",
                 padding: "10%",
-                paddingRight: "100%",
+                paddingRight: "3rem",
+                //hover
+                "&:hover": {
+                  //shadow
+                  boxShadow: "0px 3px 5px rgba(0, 0, 0, 0.2)",
+                },
+
                 // paddingLeft: "8%",
                 color: "white",
                 backgroundColor: "#ff385c",
@@ -140,7 +157,7 @@ const Stays = ({ handleClose }) => {
               <SearchIcon
                 fontSize="small"
                 sx={{
-                  marginRight: "0.5rem",
+                  marginRight: "0.8rem",
                   // "&:hover": {
                   //   paddingLeft: "5%",
                   // },
