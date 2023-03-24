@@ -102,12 +102,14 @@ const HeaderContainer = ({ handleToggle, setValue }) => {
               paddingTop={1}
               paddingBottom={1}
               paddingLeft={2}
-              paddingRight={2}
+              paddingRight={3}
+              // width={300}
               sx={{
                 border: "5px solid rgba(255, 255, 255, .5)",
                 boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",
                 borderRadius: "30px",
                 display: "flex",
+                // justifyContent: "space-between",
                 alignItems: "center",
 
                 "&:hover": {
@@ -119,7 +121,8 @@ const HeaderContainer = ({ handleToggle, setValue }) => {
               <div onClick={handleToggle} style={{ display: "flex" }}>
                 <SearchIcon fontSize="small" sx={{ marginRight: "10%" }} />
                 <Typography
-                  marginRight={15}
+                  marginRight={1}
+                  paddingRight={25}
                   variant="subtitle2"
                   sx={{ whiteSpace: "nowrap", fontWeight: "bold" }}
                 >
