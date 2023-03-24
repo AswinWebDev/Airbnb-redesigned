@@ -1,7 +1,6 @@
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,8 +8,6 @@ import { Grid } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
 import { addWishList, removeWishList } from "../store";
-
-import "./CardList.css";
 import { Link } from "react-router-dom";
 import CarouselContainer from "./CarouselContainer";
 
@@ -38,7 +35,6 @@ const Wishlist = () => {
               right: "4%",
               zIndex: "9",
               opacity: "0.8",
-              // color: "red",
             }}
           >
             <FavoriteSharpIcon style={{ color: "red" }} />

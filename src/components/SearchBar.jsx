@@ -1,6 +1,6 @@
 import { Collapse } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import HeaderContainer from "./header/HeaderContainer";
 import HeaderSearch from "./header/HeaderSearch";

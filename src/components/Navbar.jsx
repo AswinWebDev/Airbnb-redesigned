@@ -14,23 +14,18 @@ const Navbar = ({ iconData }) => {
   const allLocation = useSelector((state) => {
     return state.jsonLocation;
   });
-  // console.log(typeof jsonTypeVal);
+
   const [value, setValue] = useState(0);
   if (iconData) {
-    // console.log(iconData[0].title);
   }
-  //   console.log(iconData.title);
 
   useEffect(() => {
     if (allLocation !== "flexible") {
       setValue(null);
     }
-
-    // allLocation !== "flexible" ? setValue(null) : null;
   }, [allLocation]);
 
   const renderTabs = iconData?.map((icon) => {
-    // console.log();
     const imageAndTitle = (
       <Stack spacing={2}>
         <img src={icon.url} alt={icon.title} style={{ maxWidth: "1.7rem" }} />
@@ -58,7 +53,6 @@ const Navbar = ({ iconData }) => {
       />
     );
   });
-  //   console.log(renderTabs);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

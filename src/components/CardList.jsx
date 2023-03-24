@@ -1,7 +1,6 @@
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,11 +8,9 @@ import { Grid } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
 import { addWishList, removeWishList } from "../store";
-
 import "./CardList.css";
 import { Link } from "react-router-dom";
 import CarouselContainer from "./CarouselContainer";
-import { useEffect, useState } from "react";
 
 const CardList = () => {
   const allJson = useSelector((state) => {
@@ -31,16 +28,11 @@ const CardList = () => {
   const priceFilter = useSelector((state) => {
     return state.filterPrice;
   });
-  // console.log(priceFilter[1]);
+
   // wishlist //
   const wishlistItems = useSelector((state) => {
     return state.wishList;
   });
-  // const [isChanged, setIsChanged] = useState(false);
-  // useEffect(() => {
-  //   console.log(wishlistItems);
-  //   // console.log(isChanged);
-  // }, [wishlistItems, isChanged]);
 
   const dispatch = useDispatch();
   const handleWishList = (mov) => {
@@ -48,12 +40,10 @@ const CardList = () => {
       ? dispatch(removeWishList(mov))
       : dispatch(addWishList(mov));
   };
-  // else add it
 
   // wishlist //
   const rendered = allJson
     .filter((mov) => {
-      // console.log(mov.location);
       if (allLocation !== "flexible") {
         return mov.location === allLocation;
       }
@@ -80,7 +70,6 @@ const CardList = () => {
                 right: "4%",
                 zIndex: "9",
                 opacity: "0.8",
-                // color: "red",
               }}
             >
               <FavoriteSharpIcon
@@ -113,7 +102,7 @@ const CardList = () => {
                   1-7 Mar
                 </Typography>
                 <Typography variant="body1" color="text.secondary">
-                  <strong>${mov.price} </strong>night
+                  <strong>₹{mov.price} </strong>night
                 </Typography>
               </CardContent>
             </Link>

@@ -9,18 +9,10 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addLocation } from "../../store";
+// import React, { useState } from "react";
 
 const StaysRegion = ({ setTempLocation, setValue }) => {
   const isSmallScreen = useMediaQuery("(max-width: 800px)");
-  const dispatch = useDispatch();
-  const allLocation = useSelector((state) => {
-    return state.jsonLocation;
-  });
-
-  // console.log(allLocation);
 
   const region = [
     {
@@ -88,7 +80,6 @@ const StaysRegion = ({ setTempLocation, setValue }) => {
             onClick={() => {
               setTempLocation(mov.area);
               setValue(null);
-              // dispatch(addLocation(mov.area));
             }}
           >
             <CardMedia
@@ -108,10 +99,6 @@ const StaysRegion = ({ setTempLocation, setValue }) => {
     );
   });
   return (
-    // <>
-    // <Backdrop open={isBoxActive} sx={{ zIndex: 9998, backgroundColor: "rgba(0, 0, 0, 0.5)" }} onClick={handleBoxToggle} />
-    //   <Box> ...</Box>
-    // </>
     <div>
       {!isSmallScreen ? (
         <Box
@@ -119,7 +106,7 @@ const StaysRegion = ({ setTempLocation, setValue }) => {
             position: "absolute",
             top: "0",
             left: "23%",
-            // transform: "translateX(-50%)",
+
             transform: "translateY(23%)",
             zIndex: "9999",
             width: "40rem",
@@ -145,13 +132,6 @@ const StaysRegion = ({ setTempLocation, setValue }) => {
       ) : (
         <Box
           sx={{
-            // position: "absolute",
-            // top: "0",
-            // left: "23%",
-            // transform: "translateX(-50%)",
-            // transform: "translateY(23%)",
-            // zIndex: "9999",
-            // width: "40rem",
             backgroundColor: "#fff",
             border: "1px solid rgba(255, 255, 255, .5)",
             boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",

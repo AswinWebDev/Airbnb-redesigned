@@ -1,10 +1,6 @@
 import { forwardRef, useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { Divider, Slider, Typography, useMediaQuery } from "@mui/material";
 import { Box, display } from "@mui/system";
@@ -13,7 +9,7 @@ import FilledInput from "@mui/material/FilledInput";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addPrice } from "../store";
 import SyncAltIcon from "@mui/icons-material/SyncAlt";
 
@@ -30,9 +26,7 @@ const Filter = () => {
   const isSmallScreen = useMediaQuery("(max-width: 600px)");
   // slider functions and values //
   const [value1, setValue1] = useState([0, 100]);
-  //   useEffect(() => {
-  //     console.log(value1);
-  //   }, [value1]);
+
   const handleChange1 = (event, newValue, activeThumb) => {
     if (!Array.isArray(newValue)) {
       return;
@@ -46,10 +40,6 @@ const Filter = () => {
   };
   // slider functions and values //
   const [open, setOpen] = useState(false);
-  //   const [value, setValue] = useState([0, 10000]);
-  //   useEffect(() => {
-  //     setValue([value1[0] * 100, value1[1] * 100]);
-  //   }, [value1]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -64,11 +54,6 @@ const Filter = () => {
     dispatch(addPrice(value1));
     setOpen(false);
   };
-  //   const priceFilter = useSelector((state) => {
-  //     return state.filterPrice;
-  //   });
-  // //   console.log(priceFilter[1]);
-  // submit values //
 
   return (
     <div>
@@ -77,7 +62,6 @@ const Filter = () => {
           variant="outlined"
           onClick={handleClickOpen}
           style={{
-            border: "1px solid #000",
             display: "flex",
             border: "1px solid rgba(255, 255, 255, .5)",
             boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",
@@ -109,7 +93,7 @@ const Filter = () => {
             border: "1px solid rgba(255, 255, 255, .5)",
             boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",
             // borderRadius: "50px",
-            padding: "2rem",
+            padding: isSmallScreen ? "1rem" : "2rem",
             // width: "40rem",
           }}
         >

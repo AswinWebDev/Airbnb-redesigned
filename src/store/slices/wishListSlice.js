@@ -8,7 +8,6 @@ const wishListSlice = createSlice({
       return [...state, action.payload];
     },
     removeWishList(state, action) {
-      // use filter to remove the item from the array
       return state.filter((item) => item.id !== action.payload.id);
     },
   },

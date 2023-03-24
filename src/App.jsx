@@ -1,29 +1,20 @@
 import { Box, Container, useMediaQuery, useTheme } from "@mui/material";
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import BottomBar from "./components/BottomBar";
 import CardList from "./components/CardList";
-import HeaderContainer from "./components/header/HeaderContainer";
-import HeaderSearch from "./components/header/HeaderSearch";
-import Stays from "./components/header/Stays";
-import StaysRegion from "./components/header/StaysRegion";
 
 import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
 import Wishlist from "./components/Wishlist";
 import AccountPage from "./pages/AccountPage";
 import CardDetailsPage from "./pages/CardDetailsPage";
-// import BookDate from "./pages/CardDetailsPageContent/BookDate";
 import { addJson } from "./store";
 
 const App = () => {
   const dispatch = useDispatch();
-  const allJson = useSelector((state) => {
-    return state.jsonData;
-  });
-  // console.log(allJson);
 
   const [iconData, setIconData] = useState();
   useEffect(() => {
@@ -31,7 +22,7 @@ const App = () => {
       const responseIcon = await axios.get(
         "https://api.npoint.io/4150eacd15ff232a759b"
       );
-      // console.log(responseIcon.data.icons);
+
       setIconData(responseIcon.data.icons);
 
       /////////--------Fetchng JSON DATA and updating in state----------////////////

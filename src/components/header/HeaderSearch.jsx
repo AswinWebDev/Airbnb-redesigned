@@ -1,48 +1,29 @@
-import { Backdrop, Box, Stack, Typography, useMediaQuery } from "@mui/material";
+import { Box, Stack, Typography, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
-import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
 import AccountMenu from "./AccountMenu";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Stays from "./Stays";
-import StaysRegion from "./StaysRegion";
-// import "./HeaderSearch.css";
 import airbnbSvg from "../../assets/airbnb.svg";
 import { Link } from "react-router-dom";
 
 const HeaderSearch = ({ handleClose, setValue, value }) => {
   const isSmallScreen = useMediaQuery("(max-width: 600px)");
-  // const [open, setOpen] = useState(true);
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-  // const handleToggle = () => {
-  //   setOpen(!open);
-  // };
 
   const [valueBar, setValueBar] = useState(0);
   const handleChange = (event, newValue) => {
     setValueBar(newValue);
   };
-  // const stay = (
-  //   <div style={{ padding: "1rem", display: "flex", justifyContent: "center" }}>
-  //     <Stays />
-  //   </div>
-  // );
+
   return (
     <div className="HeaderSearch">
-      {/* your search content here */}
-
       <Box marginBottom={3} sx={{ backgroundColor: "#fff" }}>
         <Stack
           direction="row"
           spacing={1}
           height={60}
           justifyContent="space-between"
-          // paddingLeft={5}
-          // paddingRight={5}
-          // alignItems="center"
           sx={{ display: "flex" }}
         >
           <Box
@@ -65,7 +46,6 @@ const HeaderSearch = ({ handleClose, setValue, value }) => {
             sx={{
               display: "flex",
               alignItems: "center",
-              // width: "20%",
             }}
           >
             <Tabs
@@ -77,14 +57,12 @@ const HeaderSearch = ({ handleClose, setValue, value }) => {
               <Tab label="Stays" />
               <Tab label="Experience" />
               {!isSmallScreen && <Tab label="Online Experience" />}
-              {/* <Tab label="Online Experience" /> */}
             </Tabs>
           </Box>
           {/* search */}
 
           <Box
             sx={{
-              // display: "flex",
               display: { xs: "none", lg: "flex", xl: "flex" },
               alignSelf: "center",
               alignItems: "center",
@@ -102,7 +80,7 @@ const HeaderSearch = ({ handleClose, setValue, value }) => {
             <div
               style={{
                 display: "flex",
-                // display: { xs: "none", lg: "flex", xl: "flex" },
+
                 justifyContent: "center",
                 padding: "1rem",
               }}
@@ -113,20 +91,8 @@ const HeaderSearch = ({ handleClose, setValue, value }) => {
                 value={value}
               />
             </div>
-            {/* <div
-            style={{
-              padding: "1rem",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <StaysRegion />
-          </div> */}
           </div>
         )}
-        {/* {value !== 0 && (
-       
-      )} */}
       </Box>
     </div>
   );

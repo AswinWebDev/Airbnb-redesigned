@@ -1,11 +1,4 @@
-import {
-  Backdrop,
-  Box,
-  Divider,
-  Popover,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Typography, useMediaQuery } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import React, { useState } from "react";
 import StaysRegion from "./StaysRegion";
@@ -19,7 +12,7 @@ import { Link } from "react-router-dom";
 
 const Stays = ({ handleClose, setValue, value }) => {
   const isSmallScreen = useMediaQuery("(max-width: 600px)");
-  // const [value, setValue] = useState(0);
+
   const [tempLocation, setTempLocation] = useState("flexible");
   const dispatch = useDispatch();
   return (
@@ -38,7 +31,6 @@ const Stays = ({ handleClose, setValue, value }) => {
             value === 0 ? setValue(null) : setValue(0);
           }}
           sx={{
-            // border: "1px solid rgba(255, 255, 255, .5)",
             borderRadius: "500px",
             backgroundColor: "white",
             color: "black",
@@ -62,8 +54,6 @@ const Stays = ({ handleClose, setValue, value }) => {
             value === 1 ? setValue(null) : setValue(1);
           }}
           sx={{
-            // border: "1px solid rgba(255, 255, 255, .5)",
-            // borderRadius: "500px",
             backgroundColor: "white",
             color: "black",
             textTransform: "none",
@@ -86,8 +76,6 @@ const Stays = ({ handleClose, setValue, value }) => {
             value === 2 ? setValue(null) : setValue(2);
           }}
           sx={{
-            // border: "1px solid rgba(255, 255, 255, .5)",
-            // borderRadius: "500px",
             backgroundColor: "white",
             color: "black",
             textTransform: "none",
@@ -112,7 +100,7 @@ const Stays = ({ handleClose, setValue, value }) => {
             backgroundColor: "white",
             color: "black",
             textTransform: "none",
-            // paddingRight: "3rem",
+
             ":hover": {
               backgroundColor: "#e6e6e6",
               color: "black",
@@ -133,23 +121,21 @@ const Stays = ({ handleClose, setValue, value }) => {
               }}
               style={{
                 display: "flex",
-                // justifyContent: "center",
+
                 border: "2px solid transparent",
                 borderRadius: "30px",
-                //shadow
+
                 boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.2)",
                 padding: "10%",
                 paddingRight: "3rem",
-                //hover
+
                 "&:hover": {
-                  //shadow
                   boxShadow: "0px 3px 5px rgba(0, 0, 0, 0.2)",
                 },
 
-                // paddingLeft: "8%",
                 color: "white",
                 backgroundColor: "#ff385c",
-                // flexShrink: 0,
+
                 marginLeft: "auto",
                 cursor: "pointer",
               }}
@@ -158,9 +144,6 @@ const Stays = ({ handleClose, setValue, value }) => {
                 fontSize="small"
                 sx={{
                   marginRight: "0.8rem",
-                  // "&:hover": {
-                  //   paddingLeft: "5%",
-                  // },
                 }}
               />
               <Typography variant="subtitle2">Search</Typography>

@@ -1,24 +1,21 @@
 import { Box, Divider, Stack, Typography, useMediaQuery } from "@mui/material";
-import React from "react";
+
 import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
 import AccountMenu from "./AccountMenu";
 import airbnbSvg from "../../assets/airbnb.svg";
 import { Link } from "react-router-dom";
 import Filter from "../Filter";
+import { useSelector } from "react-redux";
 
 const HeaderContainer = ({ handleToggle, setValue }) => {
+  const allLocation = useSelector((state) => {
+    return state.jsonLocation;
+  });
   const isSmallScreen = useMediaQuery("(max-width: 600px)");
   return (
     <Box marginBottom={3}>
-      <Stack
-        direction="row"
-        spacing={1}
-        height={60}
-        // justifyContent="space-between"
-        // alignItems="center"
-        sx={{ display: "flex" }}
-      >
+      <Stack direction="row" spacing={1} height={60} sx={{ display: "flex" }}>
         <Box
           sx={{
             margin: "0",
@@ -35,7 +32,6 @@ const HeaderContainer = ({ handleToggle, setValue }) => {
         <div style={{ marginLeft: "auto", marginRight: "auto" }}>
           {!isSmallScreen ? (
             <Box
-              // onClick={handleToggle}
               paddingTop={1}
               paddingBottom={1}
               paddingLeft={2}
@@ -47,12 +43,10 @@ const HeaderContainer = ({ handleToggle, setValue }) => {
                 display: "flex",
                 alignItems: "center",
 
-                // hover anchor tag
                 "&:hover": {
                   cursor: "pointer",
                   backgroundColor: "rgba(255, 255, 255, .5)",
                 },
-                // width: "20%",
               }}
             >
               <div
@@ -66,7 +60,7 @@ const HeaderContainer = ({ handleToggle, setValue }) => {
                   variant="subtitle2"
                   sx={{ whiteSpace: "nowrap", fontWeight: "bold" }}
                 >
-                  Anywhere
+                  {allLocation}
                 </Typography>
               </div>
               <Divider orientation="vertical" flexItem />
@@ -78,7 +72,6 @@ const HeaderContainer = ({ handleToggle, setValue }) => {
               >
                 <Typography
                   marginX={2}
-                  // marginRight={4}
                   variant="subtitle2"
                   sx={{ whiteSpace: "nowrap", fontWeight: "bold" }}
                 >
@@ -87,7 +80,6 @@ const HeaderContainer = ({ handleToggle, setValue }) => {
               </div>
               <Typography
                 marginX={2}
-                // marginRight={4}
                 variant="subtitle2"
                 sx={{ whiteSpace: "nowrap", fontWeight: "bold", opacity: 0.4 }}
               >
@@ -107,7 +99,6 @@ const HeaderContainer = ({ handleToggle, setValue }) => {
             </Box>
           ) : (
             <Box
-              // onClick={handleToggle}
               paddingTop={1}
               paddingBottom={1}
               paddingLeft={2}
@@ -118,38 +109,28 @@ const HeaderContainer = ({ handleToggle, setValue }) => {
                 borderRadius: "30px",
                 display: "flex",
                 alignItems: "center",
-                // hover anchor tag
+
                 "&:hover": {
                   cursor: "pointer",
                   backgroundColor: "rgba(255, 255, 255, .5)",
                 },
-                // width: "20%",
               }}
             >
-              <div onClick={handleToggle}>
+              <div onClick={handleToggle} style={{ display: "flex" }}>
+                <SearchIcon fontSize="small" sx={{ marginRight: "10%" }} />
                 <Typography
                   marginRight={15}
                   variant="subtitle2"
                   sx={{ whiteSpace: "nowrap", fontWeight: "bold" }}
                 >
-                  Anywhere
+                  {allLocation}
                 </Typography>
               </div>
-              {/* <SearchIcon
-                fontSize="small"
-                sx={{
-                  border: "2px solid transparent",
-                  borderRadius: "30px",
-                  padding: "2%",
-                  color: "white",
-                  backgroundColor: "#ff385c",
-                  flexShrink: 0,
-                }}
-              /> */}
+
               <div
                 style={{
                   border: "2px solid black",
-                  // padding: "2rem",
+
                   borderRadius: "50%",
                   padding: "4%",
                   color: "black",
@@ -166,20 +147,12 @@ const HeaderContainer = ({ handleToggle, setValue }) => {
         <div style={{ marginLeft: "auto" }}>
           <Box
             sx={{
-              // display: "flex",
               alignSelf: "center",
               alignItems: "center",
               display: { xs: "none", lg: "flex", xl: "flex" },
-              // marginLeft: "auto",
-              // marginRight: "auto",
             }}
           >
-            <Typography
-              variant="subtitle2"
-              marginRight={2}
-              fontWeight={600}
-              // sx={{ display: { sm: "block", md: "none" } }}
-            >
+            <Typography variant="subtitle2" marginRight={2} fontWeight={600}>
               Airbnb your home
             </Typography>
             <LanguageIcon sx={{ opacity: "70%", marginRight: "1rem" }} />

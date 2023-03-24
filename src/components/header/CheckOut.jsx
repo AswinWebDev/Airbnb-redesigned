@@ -2,13 +2,13 @@ import { Box, useMediaQuery } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-import { Grid, Typography } from "@mui/material";
+
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import dayjs from "dayjs";
 import { useState } from "react";
 const CheckOut = () => {
   const isSmallScreen = useMediaQuery("(max-width: 800px)");
-  // const [checkInValue, setCheckInValue] = useState(dayjs("2022-05-17"));
+
   const [checkOutValue, setCheckOutValue] = useState(dayjs("2022-06-10"));
   return (
     <div>
@@ -18,7 +18,7 @@ const CheckOut = () => {
             position: "absolute",
             top: "0",
             left: "27%",
-            // transform: "translateX(-50%)",
+
             transform: "translateY(38%)",
             zIndex: "9999",
             width: "40rem",
@@ -36,9 +36,6 @@ const CheckOut = () => {
               justifyContent: "center",
             }}
           >
-            {/* <Typography variant="h5">Select the Date...</Typography> */}
-            {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 4 }}>
-           <Grid xs={12} item md={12}> */}
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DemoContainer
                 components={["DateCalendar"]}
@@ -57,18 +54,11 @@ const CheckOut = () => {
                 </DemoItem>
               </DemoContainer>
             </LocalizationProvider>
-            {/* </Grid>
-         </Grid> */}
           </div>
         </Box>
       ) : (
         <Box
           sx={{
-            // position: "absolute",
-            // top: "0",
-            // left: "27%",
-            // transform: "translateX(-50%)",
-            // transform: "translateY(38%)",
             zIndex: "9999",
             width: "15rem",
             backgroundColor: "#fff",
@@ -85,9 +75,6 @@ const CheckOut = () => {
               justifyContent: "center",
             }}
           >
-            {/* <Typography variant="h5">Select the Date...</Typography> */}
-            {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 4 }}>
-            <Grid xs={12} item md={12}> */}
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DemoContainer
                 components={["DateCalendar"]}
@@ -106,8 +93,6 @@ const CheckOut = () => {
                 </DemoItem>
               </DemoContainer>
             </LocalizationProvider>
-            {/* </Grid>
-          </Grid> */}
           </div>
         </Box>
       )}
