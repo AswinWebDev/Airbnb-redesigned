@@ -1,10 +1,12 @@
-import { Box, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Tab, Tabs, Typography, useMediaQuery } from "@mui/material";
 import { Stack } from "@mui/system";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addType, addLocation } from "../store";
+import Filter from "./Filter";
 
 const Navbar = ({ iconData }) => {
+  const isSmallScreen = useMediaQuery("(max-width: 600px)");
   const dispatch = useDispatch();
   const jsonTypeVal = useSelector((state) => {
     return state.jsonType;
@@ -62,7 +64,13 @@ const Navbar = ({ iconData }) => {
     setValue(newValue);
   };
   return (
-    <Box sx={{ bgcolor: "background.paper" }}>
+    <Box
+      sx={{
+        bgcolor: "background.paper",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
       <Tabs
         value={value}
         onChange={handleChange}
@@ -72,6 +80,7 @@ const Navbar = ({ iconData }) => {
       >
         {renderTabs}
       </Tabs>
+      {isSmallScreen ? null : <Filter />}
     </Box>
   );
 };

@@ -7,6 +7,7 @@ import {
   removeWishList,
   wishListReducer,
 } from "./slices/wishListSlice";
+import { addPrice, filterPriceReducer } from "./slices/filterPriceSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,7 +15,16 @@ const store = configureStore({
     jsonType: jsonTypeReducer,
     jsonLocation: jsonLocationReducer,
     wishList: wishListReducer,
+    filterPrice: filterPriceReducer,
   },
 });
 
-export { store, addJson, addType, addLocation, addWishList, removeWishList };
+export {
+  store,
+  addJson,
+  addType,
+  addLocation,
+  addWishList,
+  removeWishList,
+  addPrice,
+};

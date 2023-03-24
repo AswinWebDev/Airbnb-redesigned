@@ -31,6 +31,7 @@ const BottomBar = () => {
             color: "black",
             "&:selected": { color: "red" },
             "&:focus": { color: "red" },
+            marginRight: "1.2rem",
           }}
         />
       </Link>
@@ -53,6 +54,7 @@ const BottomBar = () => {
             color: "black",
             "&:selected": { color: "red" },
             "&:focus": { color: "red" },
+            marginLeft: "1.2rem",
           }}
           onClick={signInWithGoogle}
         />
@@ -65,6 +67,7 @@ const BottomBar = () => {
               color: "black",
               "&.Mui-selected": { color: "red" },
               "&:focus": { color: "red" },
+              marginLeft: "1.2rem",
             }}
           />
         </Link>

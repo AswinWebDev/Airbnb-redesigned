@@ -48,7 +48,7 @@ const App = () => {
   //////////// -------- bottom bar data --------////////////
   return (
     <Container maxWidth="xl">
-      <Box sx={{ padding: isSmallerScreen ? "0" : "0 3%" }}>
+      <Box sx={{ padding: isSmallerScreen ? "0%" : "0 3%" }}>
         <SearchBar />
         {/* bottom bar */}
         {isSmallerScreen && (

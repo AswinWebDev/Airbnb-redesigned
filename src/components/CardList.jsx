@@ -27,6 +27,11 @@ const CardList = () => {
   const allLocation = useSelector((state) => {
     return state.jsonLocation;
   });
+  // price filter //
+  const priceFilter = useSelector((state) => {
+    return state.filterPrice;
+  });
+  // console.log(priceFilter[1]);
   // wishlist //
   const wishlistItems = useSelector((state) => {
     return state.wishList;
@@ -54,8 +59,14 @@ const CardList = () => {
       }
       return mov.type === jsonTypeVal[0];
     })
+    .filter((mov) => {
+      return (
+        mov.price <= priceFilter[1] * 100 && mov.price >= priceFilter[0] * 100
+      );
+    })
+
     .map((mov) => {
-      // console.log(mov.location);
+      console.log(mov);
       return (
         <Grid xs={12} sm={4} item md={3}>
           <Card sx={{ maxWidth: 345, position: "relative" }}>
