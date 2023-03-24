@@ -1,10 +1,5 @@
 import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-// icons here
 import CreditCardOutlinedIcon from "@mui/icons-material/CreditCardOutlined";
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";

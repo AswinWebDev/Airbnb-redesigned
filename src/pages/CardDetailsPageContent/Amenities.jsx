@@ -1,6 +1,6 @@
-import { Divider, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+
 import SoupKitchenIcon from "@mui/icons-material/SoupKitchen";
 import WifiOutlinedIcon from "@mui/icons-material/WifiOutlined";
 import DirectionsCarOutlinedIcon from "@mui/icons-material/DirectionsCarOutlined";

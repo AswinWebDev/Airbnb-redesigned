@@ -9,9 +9,12 @@ import DehazeIcon from "@mui/icons-material/Dehaze";
 import { useState } from "react";
 import { signInWithGoogle, signOutUser } from "../../Firebase";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { resetWishList } from "../../store";
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const dispatch = useDispatch();
   const name = localStorage.getItem("name");
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -113,7 +116,14 @@ export default function AccountMenu() {
             >
               <MenuItem>Account</MenuItem>
             </Link>
-            <MenuItem onClick={signOutUser}>Log Out</MenuItem>{" "}
+            <MenuItem
+              onClick={() => {
+                dispatch(resetWishList());
+                signOutUser();
+              }}
+            >
+              Log Out
+            </MenuItem>{" "}
           </>
         ) : null}
       </Menu>

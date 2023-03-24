@@ -4,7 +4,6 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import dayjs from "dayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -22,9 +21,6 @@ const BookDate = ({
   checkOutValue,
   setCheckOutValue,
 }) => {
-  // const [checkInValue, setCheckInValue] = useState(dayjs("2022-05-17"));
-  // const [checkOutValue, setCheckOutValue] = useState(dayjs("2022-06-10"));
-  // checking no of days //
   const [dayNum, setDayNum] = useState(1);
   useEffect(() => {
     const days = checkOutValue.diff(checkInValue, "day");

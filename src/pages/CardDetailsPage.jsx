@@ -7,7 +7,6 @@ import {
   Avatar,
   Divider,
   Grid,
-  Stack,
   Typography,
   useMediaQuery,
 } from "@mui/material";
@@ -17,14 +16,13 @@ import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined
 import Amenities from "./CardDetailsPageContent/Amenities";
 import Aircover from "./CardDetailsPageContent/Aircover";
 import AboutPlace from "./CardDetailsPageContent/AboutPlace";
-import DatePicker from "./CardDetailsPageContent/DatePicker";
+
 import YourCalender from "./CardDetailsPageContent/DatePicker";
 import BookDate from "./CardDetailsPageContent/BookDate";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
-import HeaderContainer from "../components/header/HeaderContainer";
-import SearchBar from "../components/SearchBar";
+
 import CarouselContainer from "../components/CarouselContainer";
 
 const CardDetailsPage = () => {
@@ -36,8 +34,7 @@ const CardDetailsPage = () => {
   const product = allJson.filter((mov) => {
     return mov.id == params.id;
   })[0];
-  // console.log(product);
-  // images //
+
   const itemData = [
     {
       img: product.carouselPic1,
@@ -65,9 +62,6 @@ const CardDetailsPage = () => {
     },
   ];
 
-  // images //
-
-  // calender states //
   const [checkInValue, setCheckInValue] = useState(dayjs("2022-05-17"));
   const [checkOutValue, setCheckOutValue] = useState(dayjs("2022-05-18"));
   // calender states //

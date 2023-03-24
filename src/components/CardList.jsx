@@ -56,7 +56,6 @@ const CardList = () => {
     })
 
     .map((mov) => {
-      console.log(mov);
       return (
         <Grid xs={12} sm={4} item md={3}>
           <Card sx={{ maxWidth: 345, position: "relative" }}>

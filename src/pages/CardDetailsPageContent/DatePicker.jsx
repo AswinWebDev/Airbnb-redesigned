@@ -1,19 +1,15 @@
-import { useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { Grid, Typography } from "@mui/material";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import dayjs from "dayjs";
+
 const YourCalender = ({
   checkInValue,
   setCheckInValue,
   checkOutValue,
   setCheckOutValue,
 }) => {
-  // const [checkInValue, setCheckInValue] = useState(dayjs("2022-05-17"));
-  // const [checkOutValue, setCheckOutValue] = useState(dayjs("2022-06-10"));
-
   return (
     <div style={{ marginTop: "2%" }}>
       <Typography variant="h5">Select the Date...</Typography>

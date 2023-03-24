@@ -6,6 +6,7 @@ import {
   addWishList,
   removeWishList,
   wishListReducer,
+  resetWishList,
 } from "./slices/wishListSlice";
 import { addPrice, filterPriceReducer } from "./slices/filterPriceSlice";
 
@@ -26,5 +27,6 @@ export {
   addLocation,
   addWishList,
   removeWishList,
+  resetWishList,
   addPrice,
 };
