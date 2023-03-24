@@ -6,6 +6,7 @@ import HeaderContainer from "./header/HeaderContainer";
 import HeaderSearch from "./header/HeaderSearch";
 
 const SearchBar = () => {
+  const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setOpen(false);
@@ -32,7 +33,7 @@ const SearchBar = () => {
   // state to determine if the search bar is open or not
   return (
     <Box ref={containerRef}>
-      {<HeaderContainer handleToggle={handleToggle} />}
+      {<HeaderContainer handleToggle={handleToggle} setValue={setValue} />}
       <div
         style={{
           position: "absolute",
@@ -43,7 +44,11 @@ const SearchBar = () => {
         }}
       >
         <Collapse in={open}>
-          <HeaderSearch handleClose={handleClose} />
+          <HeaderSearch
+            handleClose={handleClose}
+            setValue={setValue}
+            value={value}
+          />
         </Collapse>
       </div>
     </Box>

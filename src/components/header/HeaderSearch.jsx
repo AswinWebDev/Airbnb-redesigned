@@ -11,7 +11,7 @@ import StaysRegion from "./StaysRegion";
 import airbnbSvg from "../../assets/airbnb.svg";
 import { Link } from "react-router-dom";
 
-const HeaderSearch = ({ handleClose }) => {
+const HeaderSearch = ({ handleClose, setValue, value }) => {
   const isSmallScreen = useMediaQuery("(max-width: 600px)");
   // const [open, setOpen] = useState(true);
   // const handleClose = () => {
@@ -21,15 +21,15 @@ const HeaderSearch = ({ handleClose }) => {
   //   setOpen(!open);
   // };
 
-  const [value, setValue] = useState(0);
+  const [valueBar, setValueBar] = useState(0);
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setValueBar(newValue);
   };
-  const stay = (
-    <div style={{ padding: "1rem", display: "flex", justifyContent: "center" }}>
-      <Stays />
-    </div>
-  );
+  // const stay = (
+  //   <div style={{ padding: "1rem", display: "flex", justifyContent: "center" }}>
+  //     <Stays />
+  //   </div>
+  // );
   return (
     <div className="HeaderSearch">
       {/* your search content here */}
@@ -69,7 +69,7 @@ const HeaderSearch = ({ handleClose }) => {
             }}
           >
             <Tabs
-              value={value}
+              value={valueBar}
               onChange={handleChange}
               aria-label="search bar"
               indicatorColor="primary"
@@ -97,7 +97,7 @@ const HeaderSearch = ({ handleClose }) => {
             <AccountMenu />
           </Box>
         </Stack>
-        {value === 0 && (
+        {valueBar === 0 && (
           <div>
             <div
               style={{
@@ -107,7 +107,11 @@ const HeaderSearch = ({ handleClose }) => {
                 padding: "1rem",
               }}
             >
-              <Stays handleClose={handleClose} />
+              <Stays
+                handleClose={handleClose}
+                setValue={setValue}
+                value={value}
+              />
             </div>
             {/* <div
             style={{

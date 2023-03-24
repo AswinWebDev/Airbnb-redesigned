@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Divider, Stack, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -6,7 +6,8 @@ import AccountMenu from "./AccountMenu";
 import airbnbSvg from "../../assets/airbnb.svg";
 import { Link } from "react-router-dom";
 
-const HeaderContainer = ({ handleToggle }) => {
+const HeaderContainer = ({ handleToggle, setValue }) => {
+  const isSmallScreen = useMediaQuery("(max-width: 600px)");
   return (
     <Box marginBottom={3}>
       <Stack
@@ -29,45 +30,118 @@ const HeaderContainer = ({ handleToggle }) => {
           </Link>
         </Box>
         {/* search */}
-        <Box
-          onClick={handleToggle}
-          paddingTop={1}
-          paddingBottom={1}
-          paddingLeft={2}
-          paddingRight={2}
-          sx={{
-            border: "5px solid rgba(255, 255, 255, .5)",
-            boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",
-            borderRadius: "30px",
-            display: "flex",
-            alignItems: "center",
-            // hover anchor tag
-            "&:hover": {
-              cursor: "pointer",
-              backgroundColor: "rgba(255, 255, 255, .5)",
-            },
-            // width: "20%",
-          }}
-        >
-          <Typography
-            marginRight={15}
-            variant="subtitle2"
-            sx={{ whiteSpace: "nowrap", fontWeight: "bold" }}
-          >
-            Start your search
-          </Typography>
-          <SearchIcon
-            fontSize="small"
+        {!isSmallScreen ? (
+          <Box
+            // onClick={handleToggle}
+            paddingTop={1}
+            paddingBottom={1}
+            paddingLeft={2}
+            paddingRight={2}
             sx={{
-              border: "2px solid transparent",
+              border: "5px solid rgba(255, 255, 255, .5)",
+              boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",
               borderRadius: "30px",
-              padding: "2%",
-              color: "white",
-              backgroundColor: "#ff385c",
-              flexShrink: 0,
+              display: "flex",
+              alignItems: "center",
+              // hover anchor tag
+              "&:hover": {
+                cursor: "pointer",
+                backgroundColor: "rgba(255, 255, 255, .5)",
+              },
+              // width: "20%",
             }}
-          />
-        </Box>
+          >
+            <div
+              onClick={() => {
+                setValue(0);
+                handleToggle();
+              }}
+            >
+              <Typography
+                marginRight={2}
+                variant="subtitle2"
+                sx={{ whiteSpace: "nowrap", fontWeight: "bold" }}
+              >
+                Anywhere
+              </Typography>
+            </div>
+            <Divider orientation="vertical" flexItem />
+            <div
+              onClick={() => {
+                setValue(1);
+                handleToggle();
+              }}
+            >
+              <Typography
+                marginX={2}
+                // marginRight={4}
+                variant="subtitle2"
+                sx={{ whiteSpace: "nowrap", fontWeight: "bold" }}
+              >
+                Any week
+              </Typography>
+            </div>
+            <Typography
+              marginX={2}
+              // marginRight={4}
+              variant="subtitle2"
+              sx={{ whiteSpace: "nowrap", fontWeight: "bold", opacity: 0.4 }}
+            >
+              Add guests
+            </Typography>
+            <SearchIcon
+              fontSize="small"
+              sx={{
+                border: "2px solid transparent",
+                borderRadius: "30px",
+                padding: "2%",
+                color: "white",
+                backgroundColor: "#ff385c",
+                flexShrink: 0,
+              }}
+            />
+          </Box>
+        ) : (
+          <Box
+            onClick={handleToggle}
+            paddingTop={1}
+            paddingBottom={1}
+            paddingLeft={2}
+            paddingRight={2}
+            sx={{
+              border: "5px solid rgba(255, 255, 255, .5)",
+              boxShadow: "0 0 3px 1px rgba(0, 0, 0, 0.2)",
+              borderRadius: "30px",
+              display: "flex",
+              alignItems: "center",
+              // hover anchor tag
+              "&:hover": {
+                cursor: "pointer",
+                backgroundColor: "rgba(255, 255, 255, .5)",
+              },
+              // width: "20%",
+            }}
+          >
+            <Typography
+              marginRight={15}
+              variant="subtitle2"
+              sx={{ whiteSpace: "nowrap", fontWeight: "bold" }}
+            >
+              Start your search
+            </Typography>
+            <SearchIcon
+              fontSize="small"
+              sx={{
+                border: "2px solid transparent",
+                borderRadius: "30px",
+                padding: "2%",
+                color: "white",
+                backgroundColor: "#ff385c",
+                flexShrink: 0,
+              }}
+            />
+          </Box>
+        )}
         {/* search */}
 
         <Box

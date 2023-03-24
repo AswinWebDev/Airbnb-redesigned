@@ -17,9 +17,9 @@ import { addLocation } from "../../store";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Stays = ({ handleClose }) => {
+const Stays = ({ handleClose, setValue, value }) => {
   const isSmallScreen = useMediaQuery("(max-width: 600px)");
-  const [value, setValue] = useState(0);
+  // const [value, setValue] = useState(0);
   const [tempLocation, setTempLocation] = useState("flexible");
   const dispatch = useDispatch();
   return (
