@@ -86,7 +86,13 @@ export default function AccountMenu() {
       >
         {!name ? (
           <>
-            <MenuItem onClick={signInWithGoogle} sx={{ fontWeight: "bold" }}>
+            <MenuItem
+              onClick={() => {
+                dispatch(resetWishList());
+                signInWithGoogle();
+              }}
+              sx={{ fontWeight: "bold" }}
+            >
               Sign in
             </MenuItem>
           </>
