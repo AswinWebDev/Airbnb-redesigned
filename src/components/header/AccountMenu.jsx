@@ -106,7 +106,12 @@ export default function AccountMenu() {
           <>
             <MenuItem>Notifications</MenuItem>
             <MenuItem>Trips</MenuItem>
-            <MenuItem>Wishlist</MenuItem>
+            <Link
+              to={"/wishlist"}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <MenuItem>Wishlist</MenuItem>
+            </Link>
           </>
         )}
         <Divider />

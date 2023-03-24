@@ -4,13 +4,16 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Grid } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
+import { addWishList, removeWishList } from "../store";
 
 import "./CardList.css";
 import { Link } from "react-router-dom";
 import CarouselContainer from "./CarouselContainer";
+import { useEffect, useState } from "react";
 
 const CardList = () => {
   const allJson = useSelector((state) => {
@@ -24,7 +27,25 @@ const CardList = () => {
   const allLocation = useSelector((state) => {
     return state.jsonLocation;
   });
+  // wishlist //
+  const wishlistItems = useSelector((state) => {
+    return state.wishList;
+  });
+  // const [isChanged, setIsChanged] = useState(false);
+  // useEffect(() => {
+  //   console.log(wishlistItems);
+  //   // console.log(isChanged);
+  // }, [wishlistItems, isChanged]);
 
+  const dispatch = useDispatch();
+  const handleWishList = (mov) => {
+    wishlistItems.includes(mov)
+      ? dispatch(removeWishList(mov))
+      : dispatch(addWishList(mov));
+  };
+  // else add it
+
+  // wishlist //
   const rendered = allJson
     .filter((mov) => {
       // console.log(mov.location);
@@ -37,7 +58,26 @@ const CardList = () => {
       // console.log(mov.location);
       return (
         <Grid xs={12} sm={4} item md={3}>
-          <Card sx={{ maxWidth: 345 }}>
+          <Card sx={{ maxWidth: 345, position: "relative" }}>
+            <div
+              onClick={() => {
+                handleWishList(mov);
+              }}
+              style={{
+                position: "absolute",
+                top: "2%",
+                right: "4%",
+                zIndex: "9",
+                opacity: "0.8",
+                // color: "red",
+              }}
+            >
+              <FavoriteSharpIcon
+                style={{
+                  color: wishlistItems.includes(mov) ? "red" : "inherit",
+                }}
+              />
+            </div>
             {/* carousel */}
             <CarouselContainer mov={mov} />
             {/* carousel */}

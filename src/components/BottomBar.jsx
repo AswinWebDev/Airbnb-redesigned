@@ -34,15 +34,17 @@ const BottomBar = () => {
           }}
         />
       </Link>
-      <Tab
-        icon={<FavoriteBorderOutlinedIcon />}
-        label="Wishlists"
-        sx={{
-          color: "black",
-          "&:selected": { color: "red" },
-          "&:focus": { color: "red" },
-        }}
-      />
+      <Link to={"/wishlist"} style={{ textDecoration: "none" }}>
+        <Tab
+          icon={<FavoriteBorderOutlinedIcon />}
+          label="Wishlists"
+          sx={{
+            color: "black",
+            "&:selected": { color: "red" },
+            "&:focus": { color: "red" },
+          }}
+        />
+      </Link>
       {!name ? (
         <Tab
           icon={<AccountCircleOutlinedIcon />}

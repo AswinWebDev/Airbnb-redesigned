@@ -12,6 +12,7 @@ import StaysRegion from "./components/header/StaysRegion";
 
 import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
+import Wishlist from "./components/Wishlist";
 import AccountPage from "./pages/AccountPage";
 import CardDetailsPage from "./pages/CardDetailsPage";
 // import BookDate from "./pages/CardDetailsPageContent/BookDate";
@@ -76,6 +77,7 @@ const App = () => {
           />
           <Route path="/place/:id" element={<CardDetailsPage />} />
           <Route path={"/account"} element={<AccountPage />} />
+          <Route path={"/wishlist"} element={<Wishlist />} />
         </Routes>
       </Box>
     </Container>
